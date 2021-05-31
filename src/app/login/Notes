@@ -1,0 +1,21 @@
+                  Angular Features
+             ----------------------
+    1.Component(Root - AppComponent)
+
+    2.Module(root - AppModule)
+
+    3.Data binding
+
+        3.1. one way binding
+
+            3.1.1 Component To View
+
+                3.1.1.1 String Interpolation/Interpolation({{expresiion}})
+
+                3.1.1.2 Property Binding - [Binding - Target]="Binding-source"
+
+            3.1.2 View to Component
+
+                3.1.2.1 Event Binding - (event) = "function call"
+
+                3.1.2.2 Event Binding using $event - (event) = "function call($event)"
