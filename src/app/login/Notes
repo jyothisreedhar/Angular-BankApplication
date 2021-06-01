@@ -19,8 +19,8 @@
                 3.1.2.1 Event Binding - (event) = "function call"
 
                 3.1.2.2 Event Binding using $event - (event) = "function call($event)"
-                
-                3.1.2.3 Template Referance
+
+                3.1.2.3 Template Referance variable - (#variable) # with name of variable
 
         3.2 Two Way Binding
 
