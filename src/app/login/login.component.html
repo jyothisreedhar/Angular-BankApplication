@@ -8,9 +8,9 @@
             
             
             
-            <input id="accnotext" type="text" class="text" [(ngModel)]="acno"  placeholder="Account number"><br><br>
+            <input id="accnotext" type="text" class="text" (change)="accChange($event)"  placeholder="Account number"><br><br>
             
-            <input id="pwdtext" type="password" class="text" [(ngModel)]="pswd"  placeholder="Password" ><br> <br>
+            <input id="pwdtext" type="password" class="text" (change)="pswdChange($event)"  placeholder="Password" ><br> <br>
             
             <input type="button" value="Log In" class="button butefct" (click)="login()"> <br>
             
