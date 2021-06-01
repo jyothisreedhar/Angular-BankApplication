@@ -24,4 +24,10 @@
 
         3.2 Two Way Binding
 
-            3.2.1 NgModel - (FormsModules /[(ngModel)]='variable-name]
+            angular has no ngModule so its imported
+
+            3.2.1 NgModel - (import FormsModules  in app.module.ts),[(ngModel)]='variable-name' this variable can be declared in class]
+
+    4.Dependency Injection 
+
+    5.Services==used to write reused code
