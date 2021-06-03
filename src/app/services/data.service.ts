@@ -19,16 +19,81 @@ export class DataService {
       // alert("Account Alredy Exist,Please Login");
       return false;
     }
-    else{
-      this.account_details[accno]={
+    else {
+      this.account_details[accno] = {
         name,
         accno,
         password,
-        amount:0
+        amount: 0
       }
       return true;
       // alert("successfully Registered...");
     }
+  }
+  login(accno: any, pswd: any) {
+    let dataset = this.account_details;
+    if (accno in dataset) {
+      if (pswd == dataset[accno]["password"]) {
+        return true;
+      }
+      else {
+        alert("incorrct password");
+        return false;
+      }
+
+    }
+    else {
+      alert("invalid account");
+      return false
+    }
+  }
+  deposit(accno: any, pswd: any, amnt: any) {
+    var amount = parseInt(amnt)
+    let dataset = this.account_details;
+    if (accno in dataset) {
+      if (pswd == dataset[accno]["password"]) {
+        dataset[accno]["amount"] += amount;
+        return dataset[accno]["amount"];
+      }
+      else {
+        alert("incorrct password");
+        return false;
+      }
+    }
+    else {
+      alert("Invalid account");
+      return false;
+    }
+
+  }
+  withdraw(accno: any, pswd: any, amnt: any) {
+    var amount = parseInt(amnt)
+    let dataset = this.account_details;
+    if (accno in dataset) {
+      if (pswd == dataset[accno]["password"]) {
+
+        if (amount < dataset[accno]["amount"]){
+
+          dataset[accno]["amount"] -= amount;
+
+        return dataset[accno]["amount"];
+      }
+      else {
+        alert("insufficient balance");
+        return false;
+      }
+      }
+    else {
+      alert("Incorrect password");
+      return false
+    }
+  
+  }
+  else{
+  alert("Invalid account");
+  return false;
+
+}
   }
 }
 

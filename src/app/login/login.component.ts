@@ -40,19 +40,25 @@ export class LoginComponent implements OnInit {
 
     var accno = this.acno;
     var pswd = this.pswd;
-    let dataset = this.dataService.account_details
-    if (accno in dataset) {
-      if (pswd == dataset[accno]["password"]) {
-        alert("Login Success");
-        this.router.navigateByUrl("dashboard")
-      }
-      else {
-        alert("Incorrect Password");
-      }
+    const result=this.dataService.login(accno,pswd)
+    if (result){
+      alert("Successfully Loged In");
+      this.router.navigateByUrl("dashboard")
     }
-    else {
-      alert("Invalid Account Number");
-    }
+    // code rewrite dataService
+    // let dataset = this.dataService.account_details
+    // if (accno in dataset) {
+    //   if (pswd == dataset[accno]["password"]) {
+    //     alert("Login Success");
+    //     this.router.navigateByUrl("dashboard")
+    //   }
+    //   else {
+    //     alert("Incorrect Password");
+    //   }
+    // }
+    // else {
+    //   alert("Invalid Account Number");
+    // }
 
 
   }
