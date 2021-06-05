@@ -31,3 +31,24 @@
     4.Dependency Injection 
 
     5.Services==used to write reused code
+
+    6.Template driven angular Forms
+
+    7.Model driven angular Forms
+
+        7.1 Reactive Forms (ReactiveFormsModule)
+
+            7.1.1 Form Group
+
+            7.1.2 Form Array
+
+            7.1.3 Form Control
+
+    8.Angular Directives
+
+        8.1 Component Directives
+
+        8.2 Structural Directives
+            8.2.1 *ngIf="condition"
+            8.2.2  *ngFor=
+            8.2.3  *ngSwitch

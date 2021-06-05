@@ -1,50 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+
+            <div class="main">
+                <h4>Deposit form</h4><br>
+                <form [formGroup]="depositForm" (ngSubmit)="deposit()">
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
+                    <input id="log" type="text" class="text" name="acno" formControlName="acno"
+                        placeholder="Account number"><br><br>
+                    <div *ngIf="(this.depositForm.get('acno')?.touched || this.depositForm.get('acno')?.dirty) && this.depositForm.get('acno')?.errors"
+                        class="error">Invalid AccountNumber</div>
 
-                <div class="main">
-                    <h4>Deposit form</h4><br>
-                    <form (ngSubmit)="deposit()">
-
-
-                        <input id="log" type="text" class="text" name="acno" [(ngModel)]="acno" placeholder="Account number"><br><br>
-
-                        <input id="pass" type="password" class="text" name="pswd" [(ngModel)]="pswd" placeholder="Password"><br> <br>
-                        <input id="amo" type="text" class="text" name="amount" [(ngModel)]="amount" placeholder="Amount"><br><br>
-                        <!-- <input type="submit" value="Withdrawal" class="button butefct" onclick="Bank.withdraw()">
-                        <br><br> -->
-                        <input type="submit" value="Deposit" class="button button1 butefct" >
-                        <br><br>
-                    </form>
-                </div>
+                    <input id="pass" type="password" class="text" name="pswd" formControlName="pswd"
+                        placeholder="Password"><br> <br>
+                    <div *ngIf="(this.depositForm.get('pswd')?.touched || this.depositForm.get('pswd')?.dirty) && this.depositForm.get('pswd')?.errors"
+                        class="error">Invalid Password</div>
+                    <input id="amo" type="text" class="text" name="amount" formControlName="amount"
+                        placeholder="Amount"><br><br>
+                        <div *ngIf="(this.depositForm.get('amount')?.touched || this.depositForm.get('amount')?.dirty) && this.depositForm.get('amount')?.errors"
+                        class="error">Invalid Amount</div>
+                    
+                    <input type="submit" value="Deposit" class="button button1 butefct">
+                    <br><br>
+                </form>
             </div>
-            <div class="col-4"></div>
         </div>
+        <div class="col-4"></div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
 
-                <div class="main">
-                    <h4>Withdraw form</h4><br>
-                    <form (ngSubmit)="withdraw()">
+            <div class="main">
+                <h4>Withdraw form</h4><br>
+                <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
 
 
-                        <input id="log1" type="text" class="text" name="wacno" [(ngModel)]="wacno" placeholder="Account number"><br><br>
+                    <input id="log1" type="text" class="text" name="wacno" formControlName="wacno"
+                        placeholder="Account number"><br><br>
+                        <div *ngIf="(this.withdrawForm.get('wacno')?.touched || this.withdrawForm.get('wacno')?.dirty) && this.withdrawForm.get('wacno')?.errors"
+                        class="error">Invalid AccountNumber</div>
 
-                        <input id="pass1" type="password" class="text" name="wpswd" [(ngModel)]="wpswd"  placeholder="Password"><br> <br>
-                        <input id="amo1" type="text" class="text" name="wamount" [(ngModel)]="wamount" placeholder="Amount"><br><br>
-                        <input type="submit" value="Withdrawal" class="button butefct" >
-                        <br><br>
-                        <!-- <input type="submit" value="Deposit" class="button button1 butefct" onclick="Bank.deposit()"> -->
-                        <br><br>
-                    </form>
-                </div>
+                    <input id="pass1" type="password" class="text" name="wpswd" formControlName="wpswd"
+                        placeholder="Password"><br> <br>
+                        <div *ngIf="(this.withdrawForm.get('wpswd')?.touched || this.withdrawForm.get('wpswd')?.dirty) && this.withdrawForm.get('wpswd')?.errors"
+                        class="error">Invalid Password</div>
+                    <input id="amo1" type="text" class="text" name="wamount" formControlName="wamount"
+                        placeholder="Amount"><br><br>
+                        <div *ngIf="(this.withdrawForm.get('wamount')?.touched || this.withdrawForm.get('wamount')?.dirty) && this.withdrawForm.get('wamount')?.errors"
+                        class="error">Invalid Amount</div>
+                    <input type="submit" value="Withdrawal" class="button butefct">
+                    <br><br>
+                    
+                    <br><br>
+                </form>
             </div>
-            <div class="col-4"></div>
         </div>
+        <div class="col-4"></div>
     </div>
+</div>

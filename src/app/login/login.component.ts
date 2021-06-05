@@ -1,5 +1,6 @@
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -14,55 +15,40 @@ export class LoginComponent implements OnInit {
   // account = "Account Number";
   acno = "Account Number";
   pswd = "";
-
-  // account_details: any = {
-  //   1000: { name: "ajay", accno: 1000, password: "testone", amount: 5000 },
-  //   1001: { name: "vijay", accno: 1001, password: "testtwo", amount: 3000 },
-  //   1002: { name: "ram", accno: 1002, password: "testthree", amount: 7000 },
-  //   1003: { name: "ravi", accno: 1003, password: "testfour", amount: 10000 },
-  // }
-
-  constructor(private router:Router, private dataService:DataService) { }
+  loginForm=this.log.group({
+    
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[a-zA-z0-9]*')]]
+  })
+  
+  constructor(private router:Router, private dataService:DataService,private log:FormBuilder) { }
 
   ngOnInit(): void {
   }
-  // accChange(event: any) {
-  //   this.acno = event.target.value
-  //   console.log(this.acno);
-
-  // }
-  // pswdChange(event: any) {
-  //   this.pswd = event.target.value
-  //   console.log(this.pswd);
-  // }
+  
   login() {
     // console.log(a.value,p.value);
 
-    var accno = this.acno;
-    var pswd = this.pswd;
-    const result=this.dataService.login(accno,pswd)
-    if (result){
-      alert("Successfully Loged In");
-      this.router.navigateByUrl("dashboard")
+    var accno = this.loginForm.value.acno;
+    var pswd = this.loginForm.value.pswd;
+    if(this.loginForm.valid){
+      const result=this.dataService.login(accno,pswd)
+      if (result){
+        alert("Successfully Loged In");
+        this.router.navigateByUrl("dashboard")
+      }
     }
-    // code rewrite dataService
-    // let dataset = this.dataService.account_details
-    // if (accno in dataset) {
-    //   if (pswd == dataset[accno]["password"]) {
-    //     alert("Login Success");
-    //     this.router.navigateByUrl("dashboard")
-    //   }
-    //   else {
-    //     alert("Incorrect Password");
-    //   }
-    // }
-    // else {
-    //   alert("Invalid Account Number");
-    // }
-
+  
+    else{
+      alert("Invalid Form")
+    } 
 
   }
   register() {
     this.router.navigateByUrl("register");
   }
 }
+
+
+
+
