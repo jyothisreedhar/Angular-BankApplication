@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
   currentUser=""
+  currentAcc=""
   account_details: any = {
     1000: { name: "Ajay", accno: 1000, password: "testone", amount: 5000 },
     1001: { name: "Vijay", accno: 1001, password: "testtwo", amount: 3000 },
@@ -12,7 +13,33 @@ export class DataService {
     1003: { name: "Ravi", accno: 1003, password: "testfour", amount: 10000 },
   }
 
-  constructor() { }
+  constructor() { 
+    this.getDetails();
+  }
+  saveDetails(){
+    localStorage.setItem("account_details",JSON.stringify(this.account_details))
+  if(this.currentUser){
+    localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
+    
+  }
+  if(this.currentUser){
+    localStorage.setItem("currentAcc",JSON.stringify(this.currentAcc))
+    
+  }
+}
+  getDetails(){
+    if(localStorage.getItem("account_details")){
+      this.account_details=JSON.parse (localStorage.getItem("account_details") || '')
+    }
+  if(localStorage.getItem("currentUser")){
+    this.currentUser=JSON.parse(localStorage.getItem("currentUser") || '')
+    
+  }
+  if(localStorage.getItem("currentAcc")){
+    this.currentAcc=JSON.parse(localStorage.getItem("currentAcc") || '')
+  }
+  }
+
   register(name: any, accno: any, password: any) {
 
     let dataset = this.account_details;
@@ -27,6 +54,7 @@ export class DataService {
         password,
         amount: 0
       }
+      this.saveDetails();
       return true;
       // alert("successfully Registered...");
     }
@@ -36,6 +64,8 @@ export class DataService {
     if (accno in dataset) {
       if (pswd == dataset[accno]["password"]) {
         this.currentUser =dataset[accno]["name"]
+        this.currentAcc=accno
+        this.saveDetails();
         return true;
       }
       else {

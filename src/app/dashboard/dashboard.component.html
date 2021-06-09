@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
+            <h1>Welcome {{user}}</h1>
 
             <div class="main">
                 <h4>Deposit form</h4><br>
@@ -19,9 +20,9 @@
                         class="error">Invalid Password</div>
                     <input id="amo" type="text" class="text" name="amount" formControlName="amount"
                         placeholder="Amount"><br><br>
-                        <div *ngIf="(this.depositForm.get('amount')?.touched || this.depositForm.get('amount')?.dirty) && this.depositForm.get('amount')?.errors"
+                    <div *ngIf="(this.depositForm.get('amount')?.touched || this.depositForm.get('amount')?.dirty) && this.depositForm.get('amount')?.errors"
                         class="error">Invalid Amount</div>
-                    
+
                     <input type="submit" value="Deposit" class="button button1 butefct">
                     <br><br>
                 </form>
@@ -42,24 +43,29 @@
 
                     <input id="log1" type="text" class="text" name="wacno" formControlName="wacno"
                         placeholder="Account number"><br><br>
-                        <div *ngIf="(this.withdrawForm.get('wacno')?.touched || this.withdrawForm.get('wacno')?.dirty) && this.withdrawForm.get('wacno')?.errors"
+                    <div *ngIf="(this.withdrawForm.get('wacno')?.touched || this.withdrawForm.get('wacno')?.dirty) && this.withdrawForm.get('wacno')?.errors"
                         class="error">Invalid AccountNumber</div>
 
                     <input id="pass1" type="password" class="text" name="wpswd" formControlName="wpswd"
                         placeholder="Password"><br> <br>
-                        <div *ngIf="(this.withdrawForm.get('wpswd')?.touched || this.withdrawForm.get('wpswd')?.dirty) && this.withdrawForm.get('wpswd')?.errors"
+                    <div *ngIf="(this.withdrawForm.get('wpswd')?.touched || this.withdrawForm.get('wpswd')?.dirty) && this.withdrawForm.get('wpswd')?.errors"
                         class="error">Invalid Password</div>
                     <input id="amo1" type="text" class="text" name="wamount" formControlName="wamount"
                         placeholder="Amount"><br><br>
-                        <div *ngIf="(this.withdrawForm.get('wamount')?.touched || this.withdrawForm.get('wamount')?.dirty) && this.withdrawForm.get('wamount')?.errors"
+                    <div *ngIf="(this.withdrawForm.get('wamount')?.touched || this.withdrawForm.get('wamount')?.dirty) && this.withdrawForm.get('wamount')?.errors"
                         class="error">Invalid Amount</div>
                     <input type="submit" value="Withdrawal" class="button butefct">
                     <br><br>
-                    
+
                     <br><br>
                 </form>
             </div>
+            <br>
+            <app-delete-confirmation (onDelete)="onDelete($event)" [item]='acno'></app-delete-confirmation><br>
+
+            <button type="submit" class="button button1 butefct" (click)="deleteAcc()">Delete Account</button>
         </div>
+
         <div class="col-4"></div>
     </div>
 </div>

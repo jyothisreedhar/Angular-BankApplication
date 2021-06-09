@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
   // acno="";
   // pswd="";
   // amount="";
+  acno=""
   depositForm = this.db.group({
 
     acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
@@ -28,7 +29,7 @@ export class DashboardComponent implements OnInit {
     wamount: ['', [Validators.required, Validators.pattern('[0-9]*')]],
   })
 
-  user=this.dataService.currentUser
+  user=this.dataService.currentUser;
   constructor(private dataService: DataService, private db: FormBuilder) { }
 
   ngOnInit(): void {
@@ -65,6 +66,13 @@ export class DashboardComponent implements OnInit {
       alert("Invalid Form")
     }
 
+  }
+  deleteAcc(){
+    this.acno=this.dataService.currentAcc
+    
+  }
+  onDelete(event:any){
+    alert(" from parent ");
   }
 
 }

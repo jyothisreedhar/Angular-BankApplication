@@ -49,6 +49,15 @@
         8.1 Component Directives
 
         8.2 Structural Directives
+
             8.2.1 *ngIf="condition"
+
             8.2.2  *ngFor=
+
             8.2.3  *ngSwitch
+
+    9.Local Storage
+    
+    10.Parent Child Data Sharing
+
+        10.1 @Input- parent to child Data Sharing
