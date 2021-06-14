@@ -1,5 +1,5 @@
 <div class="delete" *ngIf="item!= '' ">
-    <p>Are You Shure Do You Want Delete this Account{{item}}   </p>
+    <p>Are You Shure Do You Want Delete this Account {{item}}   </p>
     <button type="submit" (click)="delete()">Delete</button>&nbsp;&nbsp;&nbsp;
-    <button type="submit" >cancel</button>
+    <button type="submit" (click)="cancel()">cancel</button>
 </div>

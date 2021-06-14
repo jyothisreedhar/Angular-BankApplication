@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class DashboardComponent implements OnInit {
   // acno="";
   // pswd="";
   // amount="";
-  acno=""
+  acno="";
+  lDate : Date= new Date();
   depositForm = this.db.group({
 
     acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
@@ -30,7 +32,7 @@ export class DashboardComponent implements OnInit {
   })
 
   user=this.dataService.currentUser;
-  constructor(private dataService: DataService, private db: FormBuilder) { }
+  constructor(private dataService: DataService, private db: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -71,8 +73,20 @@ export class DashboardComponent implements OnInit {
     this.acno=this.dataService.currentAcc
     
   }
-  onDelete(event:any){
-    alert(" from parent ");
+  onCancel(){
+    this.acno=""
   }
+  onDelete(event:any){
+    const result=this.dataService.deleteAccDetails(event)
+    if(result){
+      alert("Account Deleted Successfully");
+      this.router.navigateByUrl("")
+    }
+    else{
+      alert("Operation denied")
+    }
+    
+  }
+  
 
 }

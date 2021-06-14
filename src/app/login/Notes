@@ -56,8 +56,22 @@
 
             8.2.3  *ngSwitch
 
+        8.3 Attribute Directives
+        
+            8.3.1 Inbuit Attribute Directives
+
+            8.3.2 User Defined Attribute Directives
+
     9.Local Storage
     
     10.Parent Child Data Sharing
 
-        10.1 @Input- parent to child Data Sharing
+        10.1 @Input- Parent to Child Data Sharing
+
+        10.2 @Output -Child to Parent Data Sharing
+        
+    11. EventEmitter =>Generate user defined event
+
+    12.Angular Pipes - Syntax :expresion | pipeOperator [:pipeArguments]
+
+    13.Angular Animations

@@ -3,9 +3,14 @@
         <div class="col-4"></div>
         <div class="col-4">
             <h1>Welcome {{user}}</h1>
+            <h5>Login at (Unformatted) : {{lDate}} </h5>
+            <h5>Login at (formatted) : {{lDate  |date | uppercase }}</h5>
+            <h5>Login at (formatted) : {{lDate |date :'shortDate' }}</h5><br><br>
+            <app-animation-demo-component></app-animation-demo-component>
+            
 
-            <div class="main">
-                <h4>Deposit form</h4><br>
+            <div [ngClass]="acno? 'deletestyle'  : ''  "class="main">
+                <h4 appHighlight >Deposit form</h4><br>
                 <form [formGroup]="depositForm" (ngSubmit)="deposit()">
 
 
@@ -36,8 +41,8 @@
         <div class="col-4"></div>
         <div class="col-4">
 
-            <div class="main">
-                <h4>Withdraw form</h4><br>
+            <div [ngClass]="acno? 'deletestyle'  : '' "class="main">
+                <h4 appHighlight >Withdraw form</h4><br>
                 <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
 
 
@@ -61,7 +66,7 @@
                 </form>
             </div>
             <br>
-            <app-delete-confirmation (onDelete)="onDelete($event)" [item]='acno'></app-delete-confirmation><br>
+            <app-delete-confirmation (onDelete)="onDelete($event)" (onCancel)="onCancel()" [item]='acno'></app-delete-confirmation><br>
 
             <button type="submit" class="button button1 butefct" (click)="deleteAcc()">Delete Account</button>
         </div>
