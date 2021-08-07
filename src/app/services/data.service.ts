@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class DataService {
     1003: { name: "Ravi", accno: 1003, password: "testfour", amount: 10000 },
   }
 
-  constructor() {
+  constructor(private http:HttpClient) {
     this.getDetails();
   }
   saveDetails() {
@@ -51,6 +52,17 @@ export class DataService {
   }
 
   register(name: any, accno: any, password: any) {
+    //pass comment to server end
+    // register(uname: any, accno: any, pswd: any) {
+    // const data={
+    //   uname,
+    //   accno,
+    //   pswd
+      
+    // }
+    //return http verb/method("server path","user data")
+    
+    // this.http.post("http://localhost:3000/register",data)
 
     let dataset = this.account_details;
     if (accno in dataset) {
